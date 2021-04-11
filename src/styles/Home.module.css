@@ -1,0 +1,28 @@
+.banner {
+  background: url('/images/banner.png') no-repeat center center fixed;
+  background-size: cover;
+  height: 37.5rem;
+}
+
+.aboutMe{
+  background: url('/images/about.jpg') no-repeat center center fixed;
+  background-size: cover;
+  height: 100%;
+}
+
+.bannerContainer{
+  height: 100%;
+}
+.container {
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  flex-direction: column;
+  flex: 1;
+  height: 100% !important;
+}
+
+.services{
+  background-color: rgb(243, 246, 251);
+  height: 100%;
+}

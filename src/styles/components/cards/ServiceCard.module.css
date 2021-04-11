@@ -1,0 +1,21 @@
+.cardBackground {
+    background-color: rgb(150, 34, 29);
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex: 1;
+    border-radius: 10px;
+}
+
+.title{
+    height: 2rem;
+}
+
+.footer{
+    height: 3rem;
+}

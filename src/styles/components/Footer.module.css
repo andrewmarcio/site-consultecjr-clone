@@ -1,0 +1,14 @@
+.footer {
+    background: url('/images/footer-background.jpg') no-repeat;
+    background-size: cover;
+    height: 100%;
+}
+
+.container {
+    padding: 4rem 0 1rem 0;
+}
+
+.social{
+    text-decoration: none;
+    
+}
