@@ -2,74 +2,59 @@ import styles from '../styles/Home.module.css'
 import NavBar from "../components/NavBar";
 import Statistics from '../components/Statistics';
 import ValoresCard from '../components/Cards/ValoresCard';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ServiceCard from '../components/Cards/ServiceCard';
 import Footer from '../components/Footer';
 import Maps from '../components/Maps';
+import axios from 'axios';
+import { getServices } from '../util/servicos';
+import { getWorth } from '../util/valores';
+import PortifolioCard from '../components/Cards/PortifolioCard';
+import { getPortifolioData } from '../util/portifolio';
 
 export default function Home() {
-  const [valores, setValores] = useState([
-    {descricao: 'INCONFORMISMO E PROATIVIDADE'},
-    {descricao: 'COMPROMETIMENTO'},
-    {descricao: 'SINERGIA'},
-    {descricao: 'SENTIMENTO DE DONO'},
-    {descricao: 'AUTODISCIPLINA'},
-    {descricao: 'ÉTICA E EMPATIA'}
-  ]) 
-  const [services, setServices] = useState([
-    {
-      title: "INSPEÇÃO PREDIAL",
-      img : "/images/services/inspecao.png"
-    },
-    {
-      title: "ARQUITETURA DE INTERIORES",
-      img : "/images/services/interiores.png"
-    },
-    {
-      title: "PROJETO DE PREVENÇÃO E COMBATE A INCÊNDIO",
-      img : "/images/services/incendio.png"
-    },
-    {
-      title: "PROJETO ARQUITETÔNICO",
-      img : "/images/services/arquitetonico.png"
-    },
-    {
-      title: "PROJETO DE INSTALAÇÕES HIDROSSANITÁRIAS",
-      img : "/images/services/hidrossanitarias.png"
-    },
-    {
-      title: "LEVANTAMENTO ARQUITETÔNICO",
-      img : "/images/services/levantamento.png"
-    },
-    {
-      title: "PROJETO DE INSTALAÇÕES ELÉTRICAS",
-      img : "/images/services/eletrica.png"
-    },
-    {
-      title: "ORÇAMENTO DE OBRAS",
-      img : "/images/services/obras.png"
-    },
-    {
-      title: "PROJETO DE FACHADA",
-      img : "/images/services/fachada.png"
-    },
-    {
-      title: "PROJETO PAISAGÍSTICO",
-      img : "/images/services/paisagem.png"
-    },
-    {
-      title: "CONSULTORIA: LAYOUT",
-      img : "/images/services/layout.png"
-    },
-    {
-      title: "ESTUDO DE VIABILIDADE CONSTRUTIVA",
-      img : "/images/services/viabilidade.png"
-    },
-    {
-      title: "CONSULTORIA: LAYOUT ONLINE",
-      img : "/images/services/Ativo_1.png"
-    },
-  ])
+  const [valores, setValores] = useState() 
+  const [services, setServices] = useState()
+  const [portifolio, setPortifolio] = useState()
+
+  useEffect(() => {
+    getServicos()
+    getValores()
+    getPortifolio()
+  }, [])
+
+  function getServicos(){
+    let response = (error, data) => {
+      if (error) {
+        
+      }else{
+        setServices(data)
+      }
+    }
+    getServices(response)
+  }
+
+  function getValores(){
+    let response = (error, data) => {
+      if (error) {
+        
+      }else{
+        setValores(data)
+      }
+    }
+    getWorth(response)
+  }
+
+  function getPortifolio(){
+    let response = (error, data) => {
+      if(error){
+
+      }else{
+        setPortifolio(data)
+      }
+    }
+    getPortifolioData(response)
+  }
 
   return (
     <div className="main">
@@ -174,10 +159,12 @@ export default function Home() {
                       </span>
                     </h1>
                     <div className="columns is-multiline px-2">
-                      {valores.map((valor, key) => (
-                        <div className="column is-4">
-                          <ValoresCard
-                            key={key} 
+                      {(valores || []).map((valor, key) => (
+                        <div
+                          key={key} 
+                          className="column is-4"
+                        >
+                          <ValoresCard 
                             img={key+1}
                             descricao={valor.descricao}
                           />
@@ -190,9 +177,9 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="section p-0 pb-6 m-0">
+      <div className="section p-0 m-0">
         <div className={styles.services}>
-          <div className="container pt-6">
+          <div className="container py-6">
             <div className="columns my-6 pl-6">
               <div className="column pl-3">
                 <div className="container py-5 pl-5 mt-5" style={{
@@ -212,7 +199,7 @@ export default function Home() {
             </div>
             <div className="container pt-6">
               <div className="columns is-multiline">
-                {services.map((service, key) => (
+                {(services || []).map((service, key) => (
                   <div className="column is-3">
                     <ServiceCard
                       key={key}
@@ -222,6 +209,53 @@ export default function Home() {
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="section p-0 m-0">
+        <div className={styles.portifolio}>
+          <div className="container py-6">
+            <div className="columns my-6 pl-6">
+              <div className="column pl-3">
+                <div className="container py-5 pl-5 mt-5" style={{
+                  borderLeft: "1rem solid rgb(150, 34, 29)"
+                }}>
+                  <h1 className="is-size-3 has-text-black has-text-weight-bold">
+                    PORTIFÓLIO
+                  </h1>
+                </div>
+                <h5 className="is-size-5 has-text-black mt-2">Saiba mais sobre nossos projetos, conheça nosso portfólio.</h5>
+              </div>
+              <div className="column">
+                {/* <img src="/images/about-me.png" style={{
+                    float:'right',
+                    marginTop: "-3rem"
+                  }}/> */}
+              </div>
+            </div>
+            <div className="columns is-centered pl-6">
+                {(portifolio || []).map((portifolio, key) => (
+                  <div
+                    key={key} 
+                    className="column is-4"
+                  >
+                    <PortifolioCard
+                      title={portifolio.title}
+                      img={portifolio.img}
+                    />
+                  </div>
+                ))}
+            </div>
+            <div className="container has-text-centered py-4">
+              <button className="button is-danger py-5" style={{
+                backgroundColor: "rgb(150, 34, 29)",
+                padding: "3rem 10rem"
+              }}>
+                <span className="is-size-6">
+                  MAIS PROJETOS  
+                </span>  
+              </button>
             </div>
           </div>
         </div>
