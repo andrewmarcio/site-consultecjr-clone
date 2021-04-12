@@ -11,16 +11,20 @@ import { getServices } from '../util/servicos';
 import { getWorth } from '../util/valores';
 import PortifolioCard from '../components/Cards/PortifolioCard';
 import { getPortifolioData } from '../util/portifolio';
+import PostCard from '../components/Cards/PostCard';
+import { getPosts } from '../util/posts';
 
 export default function Home() {
   const [valores, setValores] = useState() 
   const [services, setServices] = useState()
   const [portifolio, setPortifolio] = useState()
+  const [posts, setPosts] = useState()
 
   useEffect(() => {
     getServicos()
     getValores()
     getPortifolio()
+    getPostsData()
   }, [])
 
   function getServicos(){
@@ -56,6 +60,17 @@ export default function Home() {
     getPortifolioData(response)
   }
 
+  function getPostsData(){
+    let response = (error, data) => {
+      if(error){
+
+      }else{
+        setPosts(data)
+      }
+    }
+    getPosts(response)
+  }
+
   return (
     <div className="main">
       <NavBar />
@@ -66,7 +81,7 @@ export default function Home() {
               <div className="column is-5 has-text-centered">
                 <img src="/images/banner-logo.png" />
               </div>
-              <div className="column" style={{"padding-top": "5rem"}}> 
+              <div className="column" style={{paddingTop: "5rem"}}> 
                 <h1 className="has-text-white" style={{"font-size":"3.3rem"}}>
                   PROJETANDO SONHOS E
                 </h1>
@@ -215,7 +230,7 @@ export default function Home() {
       </div>
       <div className="section p-0 m-0">
         <div className={styles.portifolio}>
-          <div className="container py-6">
+          <div className="container pt-3 pb-6">
             <div className="columns my-6 pl-6">
               <div className="column pl-3">
                 <div className="container py-5 pl-5 mt-5" style={{
@@ -257,6 +272,130 @@ export default function Home() {
                 </span>  
               </button>
             </div>
+          </div>
+        </div>
+      </div>
+      <div className="section p-0 m-0">
+        <div className={styles.blog}>
+          <div className="container pt-3 pb-6">
+            <div className="columns mt-6 pl-6">
+              <div className="column pl-3">
+                <div className="container py-5 pl-5 mt-5" style={{
+                  borderLeft: "1rem solid rgb(150, 34, 29)"
+                }}>
+                  <h1 className="is-size-3 has-text-black has-text-weight-bold">
+                    BLOG
+                  </h1>
+                </div>
+                  <h3 className="is-size-5 has-text-black">Conheça o blog da Consultec Jr, e fique por dentro das novidades.</h3>
+              </div>
+            </div>
+
+            <div className="columns is-centered pl-6">
+                {(posts || []).map((post, key) => (
+                  <div
+                    key={key} 
+                    className="column is-4"
+                  >
+                    <PostCard 
+                      title={post.title}
+                      postImg={post.img}
+                      datePost={post.postDate}
+                      preview={post.preview}
+                    />
+                  </div>
+                ))}
+            </div>
+            <div className="container has-text-centered py-4">
+              <button className="button is-danger py-5" style={{
+                backgroundColor: "rgb(150, 34, 29)",
+                padding: "3rem 10rem"
+              }}>
+                <span className="is-size-6">
+                  MAIS POSTAGENS  
+                </span>  
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="section p-0 m-0">
+        <div className={styles.orcamento}>
+          <div className="container pt-3 pb-6">
+            <div className="columns mt-6 pl-6">
+              <div className="column pl-3">
+                <div className="container py-5 pl-5 mt-5" style={{
+                  borderLeft: "1rem solid rgb(150, 34, 29)"
+                }}>
+                  <h1 className="is-size-3 has-text-black has-text-weight-bold">
+                    SOLICITE UM ORÇAMENTO
+                  </h1>
+                </div>
+              </div>
+            </div>
+            <div className="columns is-multiline pl-6">
+              <div className="column is-6">
+                <label className="label">PREENCHA OS CAMPOS ABAIXO:</label>
+                <div className="field">
+                  <div className="control">
+                    <input className="input" type="text" placeholder="NOME" />
+                  </div>
+                </div>
+                <div className="field">
+                  <div className="control">
+                    <input className="input" type="email" placeholder="EMAIL" />
+                  </div>
+                </div>
+                <div className="field">
+                  <div className="control">
+                    <input className="input" type="tel" placeholder="TELEFONE" />
+                  </div>
+                </div>
+              </div>
+              <div className="column is-6">
+                <div className="field">
+                  <label className="label">ESCOLHA O TIPO DE SERVIÇO:</label>
+                  <div className="control">
+                    <div class="select" style={{
+                      width: "100%"
+                    }}>
+                      <select style={{
+                        width: "100%"
+                      }}>
+                        <option>SERVIÇOS</option>
+                        {(services || []).map((servico, key) => (
+                          <option key={key} value={servico.title}>{servico.title}</option>
+                        ))}
+                        <option>OUTROS</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div className="field">
+                  <div className="control">
+                    <textarea className="textarea" rows={3} placeholder="MENSAGEM"></textarea>
+                  </div>
+                </div>
+              </div>
+              <div className="column">
+                <div className="field">
+                  <label className="label">COMO FICOU SABENDO DA CONSULTEC?</label>
+                  <div className="control">
+                    <textarea className="textarea" rows={3} placeholder="MENSAGEM"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="container has-text-centered pb-6">
+            <button className="button is-danger py-5" style={{
+              backgroundColor: "rgb(150, 34, 29)",
+              padding: "3rem 10rem"
+            }}>
+              <span className="is-size-6">
+                ENVIAR  
+              </span>  
+            </button>
           </div>
         </div>
       </div>
