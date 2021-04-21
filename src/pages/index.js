@@ -215,7 +215,7 @@ export default function Home() {
             <div className="container pt-6">
               <div className="columns is-desktop is-multiline">
                 {(services || []).map((service, key) => (
-                  <div className="column is-3 px-6" key={key}>
+                  <div className="column is-3 px-5" key={key}>
                     <ServiceCard
                       title={service.title}
                       img={service.img}
