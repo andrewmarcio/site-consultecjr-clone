@@ -5,8 +5,8 @@ export default function PortifolioCard(props){
         <div className="card">
             <div className="card-content" style={{
                 background: `url("${props.img}") no-repeat`,
-                "background-size": "cover",
-                height: "15rem",
+                backgroundSize: "100% 100%",
+                height: "17rem",
             }}>
                 <div className="content" style={{
                     height: "100%"

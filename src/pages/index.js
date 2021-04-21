@@ -77,11 +77,11 @@ export default function Home() {
       <div className={styles.banner}>
         <div className={styles.bannerContainer}>
           <div className={styles.container}>
-            <div className="columns m-0 p-0">
+            <div className="columns is-desktop m-0 p-0">
               <div className="column is-5 has-text-centered">
-                <img src="/images/banner-logo.png" />
+                <img src="/images/banner-logo.png" className={styles.bannerImg}/>
               </div>
-              <div className="column" style={{paddingTop: "5rem"}}> 
+              <div className={styles.textBannerContainer+" "+"column"} style={{paddingTop: "5rem"}}> 
                 <h1 className="has-text-white" style={{"font-size":"3.3rem"}}>
                   PROJETANDO SONHOS E
                 </h1>
@@ -91,7 +91,7 @@ export default function Home() {
                 <h1 className="has-text-white" style={{"font-size":"3.3rem"}}>
                   FUTURO.
                 </h1>
-                <div className="container">
+                <div className={styles.containerButton+" "+"container is-flex"}>
                   <button className="button is-danger py-5" style={{backgroundColor: "rgb(150, 34, 29)"}}>
                     <span className="is-size-6">
                       SOLICITE UM ORÇAMENTO GRATUITO  
@@ -114,8 +114,8 @@ export default function Home() {
       <div className="section p-0 m-0">
         <div className={styles.aboutMe}>
           <div className="container pt-6">
-            <div className="columns mt-6 pl-6">
-              <div className="column pl-3">
+            <div className="columns is-mobile mt-6 px-4">
+              <div className="column is-two-third-widescreen is-half-mobile ">
                 <div className="container py-5 pl-5 mt-5" style={{
                   borderLeft: "1rem solid rgb(150, 34, 29)"
                 }}>
@@ -124,19 +124,19 @@ export default function Home() {
                   </h1>
                 </div>
               </div>
-              <div className="column">
-                <img src="/images/about-me.png" style={{
+              <div className="column is-two-third-widescreen is-half-mobile">
+                <img src="/images/about-me.png" className={styles.imageHiden} style={{
                     float:'right',
                     marginTop: "-3rem"
                   }}/>
               </div>
             </div>
           </div>
-          <div className="container pt-6">
-            <div className="columns mt-6 pl-6">
-              <div className="column is-5 pl-3">
+          <div className="container pt-6 px-5">
+            <div className="columns mt-0">
+              <div className="column is-5">
 
-                  <div className="container mb-6">
+                  <div className="container mb-6 px-4">
                     <h1 className="is-size-3 has-text-white has-text-weight-bold mb-6">
                       <span style={{
                         borderBottom: "0.5rem solid rgb(150, 34, 29)"
@@ -151,7 +151,7 @@ export default function Home() {
                     </h3>
                   </div>
 
-                  <div className="container mb-6">
+                  <div className="container mb-6 px-4">
                     <h1 className="is-size-3 has-text-white has-text-weight-bold mb-6">
                       <span style={{
                         borderBottom: "0.5rem solid rgb(150, 34, 29)"
@@ -164,8 +164,8 @@ export default function Home() {
                     </h3>
                   </div>
               </div>
-              <div className="column ml-4">
-                  <div className="container mb-6">
+              <div className="column">
+                  <div className="container mb-6 px-5">
                     <h1 className="is-size-3 has-text-white has-text-weight-bold mb-6">
                       <span style={{
                         borderBottom: "0.5rem solid rgb(150, 34, 29)"
@@ -173,11 +173,11 @@ export default function Home() {
                       VALORES
                       </span>
                     </h1>
-                    <div className="columns is-multiline px-2">
+                    <div className="columns is-mobile is-multiline px-2">
                       {(valores || []).map((valor, key) => (
                         <div
                           key={key} 
-                          className="column is-4"
+                          className="column is-one-third-widescreen is-half-mobile"
                         >
                           <ValoresCard 
                             img={key+1}
@@ -195,8 +195,8 @@ export default function Home() {
       <div className="section p-0 m-0">
         <div className={styles.services}>
           <div className="container py-6">
-            <div className="columns my-6 pl-6">
-              <div className="column pl-3">
+            <div className="columns is-mobile my-6 px-4">
+              <div className="column is-6">
                 <div className="container py-5 pl-5 mt-5" style={{
                   borderLeft: "1rem solid rgb(150, 34, 29)"
                 }}>
@@ -205,19 +205,18 @@ export default function Home() {
                   </h1>
                 </div>
               </div>
-              <div className="column">
-                <img src="/images/about-me.png" style={{
+              <div className="column is-6">
+                <img src="/images/about-me.png" className={styles.imageHiden} style={{
                     float:'right',
                     marginTop: "-3rem"
                   }}/>
               </div>
             </div>
             <div className="container pt-6">
-              <div className="columns is-multiline">
+              <div className="columns is-desktop is-multiline">
                 {(services || []).map((service, key) => (
-                  <div className="column is-3">
+                  <div className="column is-3 px-6" key={key}>
                     <ServiceCard
-                      key={key}
                       title={service.title}
                       img={service.img}
                     />
@@ -231,7 +230,7 @@ export default function Home() {
       <div className="section p-0 m-0">
         <div className={styles.portifolio}>
           <div className="container pt-3 pb-6">
-            <div className="columns my-6 pl-6">
+            <div className="columns is-desktop my-6 px-4">
               <div className="column pl-3">
                 <div className="container py-5 pl-5 mt-5" style={{
                   borderLeft: "1rem solid rgb(150, 34, 29)"
@@ -249,11 +248,11 @@ export default function Home() {
                   }}/> */}
               </div>
             </div>
-            <div className="columns is-centered pl-6">
+            <div className="columns is-desktop is-centered">
                 {(portifolio || []).map((portifolio, key) => (
                   <div
                     key={key} 
-                    className="column is-4"
+                    className="column is-4 px-5"
                   >
                     <PortifolioCard
                       title={portifolio.title}
@@ -265,7 +264,7 @@ export default function Home() {
             <div className="container has-text-centered py-4">
               <button className="button is-danger py-5" style={{
                 backgroundColor: "rgb(150, 34, 29)",
-                padding: "3rem 10rem"
+                padding: "3rem 5em"
               }}>
                 <span className="is-size-6">
                   MAIS PROJETOS  
@@ -278,7 +277,7 @@ export default function Home() {
       <div className="section p-0 m-0">
         <div className={styles.blog}>
           <div className="container pt-3 pb-6">
-            <div className="columns mt-6 pl-6">
+            <div className="columns is-desktop mt-0 px-4">
               <div className="column pl-3">
                 <div className="container py-5 pl-5 mt-5" style={{
                   borderLeft: "1rem solid rgb(150, 34, 29)"
@@ -291,7 +290,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="columns is-centered pl-6">
+            <div className="columns is-desktop is-centered px-4">
                 {(posts || []).map((post, key) => (
                   <div
                     key={key} 
@@ -309,7 +308,7 @@ export default function Home() {
             <div className="container has-text-centered py-4">
               <button className="button is-danger py-5" style={{
                 backgroundColor: "rgb(150, 34, 29)",
-                padding: "3rem 10rem"
+                padding: "3rem 5rem"
               }}>
                 <span className="is-size-6">
                   MAIS POSTAGENS  
@@ -322,7 +321,7 @@ export default function Home() {
       <div className="section p-0 m-0">
         <div className={styles.orcamento}>
           <div className="container pt-3 pb-6">
-            <div className="columns mt-6 pl-6">
+            <div className="columns is-desktop px-4">
               <div className="column pl-3">
                 <div className="container py-5 pl-5 mt-5" style={{
                   borderLeft: "1rem solid rgb(150, 34, 29)"
@@ -333,7 +332,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="columns is-multiline pl-6">
+            <div className="columns is-desktop is-multiline px-4">
               <div className="column is-6">
                 <label className="label">PREENCHA OS CAMPOS ABAIXO:</label>
                 <div className="field">
@@ -356,7 +355,7 @@ export default function Home() {
                 <div className="field">
                   <label className="label">ESCOLHA O TIPO DE SERVIÇO:</label>
                   <div className="control">
-                    <div class="select" style={{
+                    <div className="select" style={{
                       width: "100%"
                     }}>
                       <select style={{
@@ -390,7 +389,7 @@ export default function Home() {
           <div className="container has-text-centered pb-6">
             <button className="button is-danger py-5" style={{
               backgroundColor: "rgb(150, 34, 29)",
-              padding: "3rem 10rem"
+              padding: "3rem 5rem"
             }}>
               <span className="is-size-6">
                 ENVIAR  

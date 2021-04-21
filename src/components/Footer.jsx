@@ -4,7 +4,7 @@ export default function Footer(){
     return (
         <div className={styles.footer}>
             <div className={styles.container}>
-                <div className="columns is-centered pl-6">
+                <div className="columns is-centered is-desktop px-4">
                     <div className="column is-3">
                         <div>
                             <p className="title is-size-5 has-text-white">SOBRE NÓS</p>
@@ -13,12 +13,14 @@ export default function Footer(){
                             </p>
                         </div>
                     </div>
-                    <div className="column is-3 pl-5">
+                    <div className="column is-3 px-4">
                         <div>
-                            <p className="title is-size-5 has-text-white">CONTAT0</p>
+                            <p className="title is-size-5 has-text-white">CONTATO</p>
                             <p className="mt-5 is-size-6 has-text-white">
-                                <p><i class="mr-2 fas fa-phone-alt"></i> (85) 98184-4103</p>
-                                <p><i class="mr-2 far fa-envelope"></i> contato@consultecjr.com</p>
+                                <span><i className="mr-2 fas fa-phone-alt"></i> (85) 98184-4103</span>
+                            </p>
+                            <p className="is-size-6 has-text-white">
+                                <span><i className="mr-2 far fa-envelope"></i> contato@consultecjr.com</span>
                             </p>
                         </div>
                     </div>
@@ -26,7 +28,7 @@ export default function Footer(){
                         <div>
                             <p className="title is-size-5 has-text-white">FUNCIONAMENTO</p>
                             <p className="mt-5 is-size-6 has-text-white">
-                                <p>Segunda a Sexta: 9h às 12h, 13h às 17h</p>
+                                <span>Segunda a Sexta: 9h às 12h, 13h às 17h</span>
                             </p>
                         </div>
                         <div className="pt-4">
@@ -34,17 +36,17 @@ export default function Footer(){
                             <p className={styles.social+" "+"is-size-6 has-text-white"}>
                                 <span>
                                     <a className="is-size-4 has-text-white mx-4" href="https://www.facebook.com/consultecjr/" target="_blank">
-                                        <i class="fab fa-facebook-f"></i>
+                                        <i className="fab fa-facebook-f"></i>
                                     </a>
                                 </span>
                                 <span>
                                     <a className="is-size-4 has-text-white mx-4" href="https://www.instagram.com/consultecjr/?hl=pt-br" target="_blank">
-                                        <i class="fab fa-instagram"></i>
+                                        <i className="fab fa-instagram"></i>
                                     </a>
                                 </span>
                                 <span>
                                     <a className="is-size-4 has-text-white mx-4" href="https://api.whatsapp.com/send?1=pt_BR&phone=558533669406" target="_blank">
-                                        <i class="fab fa-whatsapp"></i>
+                                        <i className="fab fa-whatsapp"></i>
                                     </a>
                                 </span>
                             </p>

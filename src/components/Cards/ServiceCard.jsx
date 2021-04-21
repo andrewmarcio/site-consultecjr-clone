@@ -7,7 +7,7 @@ export default function ServiceCard(props){
                 <div className={styles.cardBackground+" "+"content"}>
                     <div className={styles.container}>
                         <div className={styles.title}>
-                            <p class="has-text-centered has-text-white is-size-6">
+                            <p className="has-text-centered has-text-white is-size-6">
                                 {props.title}
                             </p>
                         </div>

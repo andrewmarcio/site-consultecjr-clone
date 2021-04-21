@@ -1,3 +1,13 @@
 .container{
     height: 100%;
 }
+
+.cardBody{
+    height: "15rem !important"
+}
+
+@media only screen and (max-width: 768px) {
+    .cardBody{
+        height: "17rem !important"
+    }
+  }

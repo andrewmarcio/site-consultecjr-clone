@@ -1,7 +1,7 @@
 .banner {
   background: url('/images/banner.png') no-repeat center center fixed;
   background-size: cover;
-  height: 37.5rem;
+  height: 100vh;
 }
 
 .aboutMe{
@@ -39,4 +39,39 @@
 
 .orcamento {
   background-color: rgb(230, 230, 230);
+}
+
+
+@media only screen and (max-width: 414px) {
+  .banner {
+    background: url('/images/banner.png') no-repeat center center fixed;
+    background-size: cover;
+    height: auto;
+    padding-bottom: 3rem;
+  }
+
+  .bannerImg{
+    width: 70%;
+    margin-top: 3rem;
+  }
+
+  .textBannerContainer>h1{
+    font-size: 2rem !important;
+  }
+  
+  .containerButton {
+    padding-top: 1rem;
+    justify-content: center;
+  }
+
+  .imageHiden{
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .bannerImg{
+    width: 70%;
+    margin-top: 1rem;
+  }
 }
